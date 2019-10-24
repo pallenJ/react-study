@@ -1,0 +1,43 @@
+## 2019년 10월 24일
+
+
+
+- JSX에 대한 기본적인 문법숙지. 다만 이론상으로만 보고 for문 외엔 직접 써보진 않음
+
+- Router, Route 대해 공부. 해당 내용에 대해 헤멘 부분이 많음.
+
+  - Route 관련 설정할땐 다음 명령어를 쓸것
+
+    ```
+    npm install -g create-react-app
+     
+    ```
+
+    
+
+  - Route쓸때 최소한의 import는 아래와 같음
+
+    ```react
+    import { Link, Route, BrowserRouter as Router } from "react-router-dom";
+    ```
+
+    
+
+  - Route는 exact 로 설정된것이 최소하나 있어야 돌아감(index.js기준)
+
+    ex.
+
+    ```react
+    ReactDOM.render(<Router>
+          <Route exact path = "/" component = {App}/>
+          <Route path = "/test1" component = {Test1}/>
+          <Route path = "/test2" component = {Test2}/>
+    
+    </Router>, document.getElementById('root'));
+    ```
+
+- VScode는 import와 export를 자동으로 해주지 않으므로 주의
+
+- class 를 만들때는 반드시 export역시 해줘야함
+
+- 다음번엔 기초 문법들에 대해 좀더 다루고 Class를 파볼 예정
