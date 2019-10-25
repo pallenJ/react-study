@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import App1 from './App1';
+import App1,{BoardEXE} from './App1';
 
 import * as serviceWorker from './serviceWorker';
 import { Link, Route, BrowserRouter as Router } from "react-router-dom";
@@ -19,7 +19,7 @@ import { Link, Route, BrowserRouter as Router } from "react-router-dom";
 ReactDOM.render(<Router>
       <Route exact path = "/" component = {App}/>
       <Route path = "/test" component = {App1}/>
-      <Route path = "/test1" component = {App}/>
+      <Route path = "/boardExe" component = {BoardEXE}/>
 
 </Router>, document.getElementById('root'));
 
