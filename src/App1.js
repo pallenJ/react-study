@@ -31,7 +31,7 @@ export class BoardEXE extends Component {
 
 
 }
-export class DivFormPrtc extends Component{
+export class DivFormPrtc extends Component {
     static container(source) {
         return (
 
@@ -41,22 +41,22 @@ export class DivFormPrtc extends Component{
         )
     }
 
-    static panel(source){
-        return(
-        <div class="panel col-8" style={{ marginTop: 50 }}>
-            <div class="panel-heading btn-primary">
-                <p class="h2">Table 연습예제</p>
+    static panel(source) {
+        return (
+            <div class="panel col-8" style={{ marginTop: 50 }}>
+                <div class="panel-heading btn-primary">
+                    <p class="h2">Table 연습예제</p>
 
-            </div>
-            <div class="panel-body" style={{ marginTop: 30 }}>
-                {TablePrtc.tableTest()}
+                </div>
+                <div class="panel-body" style={{ marginTop: 30 }}>
+                    {TablePrtc.tableTest()}
 
-            </div>
-            <div class="panel-footer">
-                {/* {ButtonPrtc.buttonTest()} */}
+                </div>
+                <div class="panel-footer">
+                    {/* {ButtonPrtc.buttonTest()} */}
 
+                </div>
             </div>
-        </div>
         )
     }
 
@@ -105,47 +105,76 @@ export class ButtonPrtc extends Component {
 
 export class TablePrtc extends Component {
 
-    static dataEx = {};
-    static headers = ["no","name","job","descript"]
-    static tableHeader(){
-        let rs = [];
-        this.headers.forEach(th => {
-            rs.push(<th>{th}</th>)
-        });
-        return rs;
+    static tabledata = {
+        headers: ["no", "name", "age", "ability"],
+        datas:[
+        {
+            no: "01",
+            name : "JOnathan JOestar",
+            age  :<p><span class = "h5" style = {{color:"#5882FA"}}> 20 </span>d</p>,
+            ability:"hamon"
+        },
+        {
+            no: "02",
+            name : "JOseph JOestar",
+            age  : <p>
+                <span class = "h5" style = {{color:"#00FF00"}}> 18 </span> -> 
+                <span style = {{color:"#A901DB"}}>62</span> -> 
+                <span style = {{color:"##A4A4A4"}}>79</span></p>,
+            ability:"hamon -> hamon+stand(hermit purple)"
+        },
+        {
+            no: "03",
+            name : "JOtaro kuJO",
+            age  : "17 -> 28 -> 30 -> 41",
+            ability:"Star Platina"
+        },
+        {
+            no: "04",
+            name : "JOsuke higashikata",
+            age  : 16,
+            ability:"Crazy Diamond"
+        },
+        {
+            no: "05",
+            name : "GIOrno GIOvanna",
+            age  : 15,
+            ability:"Gold Experience"
+        },
+        {
+            no: "06",
+            name : "JOlyne kuJO",
+            age  : 18,
+            ability:"Stone Free"
+        },
+        
+    ]
+    };
+    static tableSetting() {
+        let headerTemp = this.tabledata.headers;
+        let dataTemp = this.tabledata.datas;
+        this.tabledata.headers = headerTemp.map(str => <th>{str}</th>);
+        this.tabledata.datas = dataTemp.map(data =>
+            <tr>
+                <td>{data.no}</td>
+                <td class = "h5">{data.name}</td>
+                <td>{data.age}</td>
+                <td>{data.ability}</td>
+            </tr>
+             );
+             
     }
 
     static tableTest() {
+        this.tableSetting();
         return (
             <table class="table table-bordered table-hover">
                 <tbody>
-
-                    <tr>
-                        <td>data1</td>
-                        <td>data2</td>
-                        <td>data3</td>
-                        <td>data4</td>
-                    </tr>
-
-                    <tr>
-                        <td>data5</td>
-                        <td>data6</td>
-                        <td>data7</td>
-                        <td>data8</td>
-                    </tr>
-
-                    <tr>
-                        <td>data9</td>
-                        <td>data10</td>
-                        <td>data11</td>
-                        <td>data12</td>
-                    </tr>
-
-
+                {this.tabledata.datas}
                 </tbody>
                 <thead class="table-primary">
                     <tr>
-                        {this.tableHeader()}
+                        {this.tabledata.headers}
                     </tr>
                 </thead>
             </table>
