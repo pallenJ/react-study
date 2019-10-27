@@ -2,39 +2,20 @@ import React, { Component } from 'react'
 
 
 export default class App1 extends Component {
+
     render() {
-        const btnPrtc = new ButtonPrtc();
-        const tblPrtc = new TablePrtc();
-        return (
-            <div class="container pull-center" align="center">
-                <div class="panel col-8" style={{ marginTop: 50 }}>
-                    <div class="panel-heading btn-primary">
-                        <p class="h2">Table 연습예제</p>
 
-                    </div>
-                    <div class="panel-body" style={{ marginTop: 30 }}>
-                        {tblPrtc.tableTest()}
+        return DivFormPrtc.container(DivFormPrtc.panel());
 
-                    </div>
-                    <div class ="panel-footer">
-                        {btnPrtc.buttonTest()}
-
-                    </div>
-                </div>
-            </div>
-
-
-        );
     }
-
-
-
 
 }
 
 
 
 export class BoardEXE extends Component {
+    btnPrtc = new ButtonPrtc();
+    tblPrtc = new TablePrtc();
     render() {
         let elt = [];
         for (let i = 0; i < 10; i++) {
@@ -47,18 +28,50 @@ export class BoardEXE extends Component {
         )
     }
 
+
+
+}
+export class DivFormPrtc extends Component{
+    static container(source) {
+        return (
+
+            <div class="container pull-center" align="center">
+                {source}
+            </div>
+        )
+    }
+
+    static panel(source){
+        return(
+        <div class="panel col-8" style={{ marginTop: 50 }}>
+            <div class="panel-heading btn-primary">
+                <p class="h2">Table 연습예제</p>
+
+            </div>
+            <div class="panel-body" style={{ marginTop: 30 }}>
+                {TablePrtc.tableTest()}
+
+            </div>
+            <div class="panel-footer">
+                {ButtonPrtc.buttonTest()}
+
+            </div>
+        </div>
+        )
+    }
+
+
 }
 
-
-
 export class ButtonPrtc extends Component {
-    buttonEXE(btnClass, btnName) {
+
+    static buttonEXE(btnClass, btnName) {
         return (
             <button class={"btn " + btnClass} type="submit">{btnName} </button>
         );
     }
 
-    buttonTest() {
+    static buttonTest() {
         return (
             <div id="btnSample">
                 <div id="btn-larges">
@@ -91,7 +104,10 @@ export class ButtonPrtc extends Component {
 }
 
 export class TablePrtc extends Component {
-    tableTest() {
+
+    
+
+    static tableTest() {
         return (
             <table class="table table-bordered table-hover">
                 <tbody>
