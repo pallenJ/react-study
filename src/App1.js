@@ -80,17 +80,6 @@ export class DivFormPrtc extends Component {
                 }
 
             </div>
-            // <div class={"card "+classes} style={{width: 200}}>
-            //  <div class = "card-header">
-            //     <h5 class="card-title">{data.title}</h5>
-            // </div>   
-            // <div class="card-body">
-            // <p class="card-text">{data.text}</p>
-            // {data.component}
-            // </div>
-            // <div class = ></div>
-            // </div>
-
         )
     }
     static cardEXE() {
