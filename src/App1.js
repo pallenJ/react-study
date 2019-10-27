@@ -53,7 +53,7 @@ export class DivFormPrtc extends Component{
 
             </div>
             <div class="panel-footer">
-                {ButtonPrtc.buttonTest()}
+                {/* {ButtonPrtc.buttonTest()} */}
 
             </div>
         </div>
@@ -105,7 +105,15 @@ export class ButtonPrtc extends Component {
 
 export class TablePrtc extends Component {
 
-    
+    static dataEx = {};
+    static headers = ["no","name","job","descript"]
+    static tableHeader(){
+        let rs = [];
+        this.headers.forEach(th => {
+            rs.push(<th>{th}</th>)
+        });
+        return rs;
+    }
 
     static tableTest() {
         return (
@@ -137,10 +145,7 @@ export class TablePrtc extends Component {
                 </tbody>
                 <thead class="table-primary">
                     <tr>
-                        <th>col1</th>
-                        <th>col2</th>
-                        <th>col3</th>
-                        <th>col4</th>
+                        {this.tableHeader()}
                     </tr>
                 </thead>
             </table>
