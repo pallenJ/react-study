@@ -6,7 +6,8 @@ export default class App1 extends Component {
     render() {
 
         return (
-            DivFormPrtc.cardEXE()
+            //DivFormPrtc.cardEXE()
+            <DataPrtc/>
         )
 
     }
@@ -94,9 +95,9 @@ export class DivFormPrtc extends Component {
             { bg: "dark", white: true },
             { bg: "secondary", white: true },
         ];
-
+        //let keys = [bg,white];
         let elt = [];
-
+        
         cardTheme.forEach(e => {
             elt.push(DivFormPrtc.card("bg-"+e.bg+(e.white?" text-white":""),
             {
@@ -116,6 +117,7 @@ export class DivFormPrtc extends Component {
         return (
 
             <div id="card-collection" class = "form-inline">
+
                 {
                     elt
                 }
@@ -240,6 +242,16 @@ export class TablePrtc extends Component {
                     </tr>
                 </thead>
             </table>
+        );
+    }
+}
+
+export class DataPrtc extends Component {
+    render() {
+        return (
+            <div>
+                {JSON.stringify(TablePrtc.tabledata.datas)}
+            </div>
         );
     }
 }
