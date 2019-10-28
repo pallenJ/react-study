@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 
 
 export default class App1 extends Component {
@@ -7,7 +7,7 @@ export default class App1 extends Component {
 
         return (
             //DivFormPrtc.cardEXE()
-            <DataPrtc/>
+            <ModalPrtc />
         )
 
     }
@@ -97,26 +97,26 @@ export class DivFormPrtc extends Component {
         ];
         //let keys = [bg,white];
         let elt = [];
-        
+
         cardTheme.forEach(e => {
-            elt.push(DivFormPrtc.card("bg-"+e.bg+(e.white?" text-white":""),
-            {
-                title: "Card Title", text: 
-                <span>
-                <p class="h6">this is card</p>
-                <small>{e.bg} theme</small>
-                </span>
-                , component: <a class={"btn border-white btn-"+e.bg} href="#">btn</a>,
-                header: "card-head",
-                style: { width: 200 }
-            }))
+            elt.push(DivFormPrtc.card("bg-" + e.bg + (e.white ? " text-white" : ""),
+                {
+                    title: "Card Title", text:
+                        <span>
+                            <p class="h6">this is card</p>
+                            <small>{e.bg} theme</small>
+                        </span>
+                    , component: <a class={"btn border-white btn-" + e.bg} href="#">btn</a>,
+                    header: "card-head",
+                    style: { width: 200 }
+                }))
         })
 
-        
+
 
         return (
 
-            <div id="card-collection" class = "form-inline">
+            <div id="card-collection" class="form-inline">
 
                 {
                     elt
@@ -245,6 +245,47 @@ export class TablePrtc extends Component {
         );
     }
 }
+
+
+export class ModalPrtc extends Component {
+    render() {
+        return (
+            this.modalEXE()
+        );
+    }
+
+    modalEXE(data) {
+        return (
+            <Fragment>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                    Launch demo modal
+    </button>
+
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                ...
+    </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-Close">Save changes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </Fragment>
+        )
+    }
+
+}
+
 
 export class DataPrtc extends Component {
     render() {
