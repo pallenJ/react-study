@@ -7,7 +7,8 @@ export default class App1 extends Component {
 
         return (
             //DivFormPrtc.cardEXE()
-            ModalPrtc.modalTest()
+            //ModalPrtc.modalTest()
+            TablePrtc.tableTest2()
         )
 
     }
@@ -247,6 +248,18 @@ export class TablePrtc extends Component {
         this.tableSetting();
         let testData = this.tabledata;
         testData.class = "table-primary";
+        return (
+            <table class="table">
+                <tbody>
+                    {this.tabledata.datas}
+                </tbody>
+                <thead class="">
+                    <tr>
+                        {this.tabledata.headers}
+                    </tr>
+                </thead>
+            </table>
+        );
     }
     static tableTest() {
         this.tableSetting();
