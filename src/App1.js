@@ -228,14 +228,14 @@ export class TablePrtc extends Component {
         );
 
     }
-
+ 
     static tableExE(data){
         return (
-            <table class="table table-bordered table-hover">
-                <tbody>
+            <table class={"table "+data.class}>
+                <tbody class = {data.bodyClass}>
                     {data.datas}
                 </tbody>
-                <thead class="table-primary">
+                <thead class = {data.headerClass}>
                     <tr>
                         {data.headers}
                     </tr>
@@ -243,7 +243,11 @@ export class TablePrtc extends Component {
             </table>
         );
     }
-
+    static tableTest2(){
+        this.tableSetting();
+        let testData = this.tabledata;
+        testData.class = "table-primary";
+    }
     static tableTest() {
         this.tableSetting();
         return (
