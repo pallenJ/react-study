@@ -275,7 +275,9 @@ export class ModalPrtc extends Component {
                                 }
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-primary">Save changes</button>
+                                {data.modalFooter?data.modalFooter:
+                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                }
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                             </div>
                         </div>
