@@ -229,6 +229,8 @@ export class TablePrtc extends Component {
 
     }
 
+    static tableExE(data){}
+
     static tableTest() {
         this.tableSetting();
         return (
