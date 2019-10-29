@@ -7,7 +7,7 @@ export default class App1 extends Component {
 
         return (
             //DivFormPrtc.cardEXE()
-            <ModalPrtc />
+            ModalPrtc.modalTest()
         )
 
     }
@@ -248,34 +248,35 @@ export class TablePrtc extends Component {
 
 
 export class ModalPrtc extends Component {
-    render() {
-        return (
-            this.modalEXE()
-        );
-    }
+ 
 
-    modalEXE(data) {
+    static modalEXE(data) {
+        let modalID = (data.modalID?data.modalID:"example")+"Modal"
         return (
             <Fragment>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                    Launch demo modal
-    </button>
 
-                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target={"#"+modalID}>
+                    {data.btnName}
+                 </button>
+
+                <div class="modal fade" id={modalID} tabindex="-1" role="dialog" aria-labelledby={modalID+"Label"} aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                <h5 class="modal-title" id={modalID+"Label"}>{data.modalTitle}</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
                             <div class="modal-body">
-                                ...
-    </div>
+                                <p class = "text-center h6"> {data.modalMsg} </p>
+                                {
+                                    data.page?data.page:<small class="text-right text-secondary">페이지 없음</small>
+                                }
+                            </div>
                             <div class="modal-footer">
+                                <button type="button" class="btn btn-primary">Save changes</button>
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-Close">Save changes</button>
                             </div>
                         </div>
                     </div>
@@ -283,6 +284,14 @@ export class ModalPrtc extends Component {
             </Fragment>
         )
     }
+
+    static modalTest(){
+       let data = {btnName:"모달 테스트", modalTitle : "여긴 타이틀", modalMsg : "여긴 메세지"};
+       return this.modalEXE(data);
+    }
+
+
+
 
 }
 
