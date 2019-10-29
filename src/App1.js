@@ -4,11 +4,16 @@ import React, { Component, Fragment } from 'react'
 export default class App1 extends Component {
 
     render() {
-
+        let source = {panelBody:TablePrtc.tableTest2()}
         return (
             //DivFormPrtc.cardEXE()
             //ModalPrtc.modalTest()
-            TablePrtc.tableTest2()
+            //TablePrtc.tableTest2()
+            DivFormPrtc.container(
+                DivFormPrtc.panel(
+                    source
+                )
+            )
         )
 
     }
@@ -49,11 +54,11 @@ export class DivFormPrtc extends Component {
         return (
             <div class="panel col-8" style={{ marginTop: 50 }}>
                 <div class="panel-heading btn-primary">
-                    <p class="h2">Table 연습예제</p>
+                    <p class="h2">{source.title}</p>
 
                 </div>
                 <div class="panel-body" style={{ marginTop: 30 }}>
-                    {TablePrtc.tableTest()}
+                    {source.panelBody}
 
                 </div>
                 <div class="panel-footer">
@@ -227,7 +232,7 @@ export class TablePrtc extends Component {
                 <td>{data.ability}</td>
             </tr>
         );
-
+        this.tabledata.headerClass = "table-primary table-bordered";
     }
  
     static tableExE(data){
@@ -248,7 +253,7 @@ export class TablePrtc extends Component {
         this.tableSetting();
         let testData = this.tabledata;
         //testData.class = "table-primary";
-        testData.class = "table-primary";
+        testData.headerClass = "table-primary table-bordered";
         return (
             this.tableExE(testData)
         );
