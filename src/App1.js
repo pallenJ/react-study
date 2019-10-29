@@ -232,33 +232,25 @@ export class TablePrtc extends Component {
  
     static tableExE(data){
         return (
-            <table class={"table "+data.class}>
-                <tbody class = {data.bodyClass}>
-                    {data.datas}
-                </tbody>
-                <thead class = {data.headerClass}>
-                    <tr>
-                        {data.headers}
-                    </tr>
-                </thead>
-            </table>
+            <table class={"table "+data.class} style = {data.style}>
+            <tbody class = {data.bodyClass}>
+                {data.datas}
+            </tbody>
+            <thead class={data.headerClass}>
+                <tr>
+                    {data.headers}
+                </tr>
+            </thead>
+        </table>
         );
     }
     static tableTest2(){
         this.tableSetting();
         let testData = this.tabledata;
+        //testData.class = "table-primary";
         testData.class = "table-primary";
         return (
-            <table class="table">
-                <tbody>
-                    {this.tabledata.datas}
-                </tbody>
-                <thead class="">
-                    <tr>
-                        {this.tabledata.headers}
-                    </tr>
-                </thead>
-            </table>
+            this.tableExE(testData)
         );
     }
     static tableTest() {
