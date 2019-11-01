@@ -1,10 +1,10 @@
 import React, { Component, Fragment } from 'react'
-
+import { Link} from "react-router-dom";
 
 export default class App1 extends Component {
 
     render() {
-        let source = {panelBody:TablePrtc.tableTest2()}
+        let source = { panelBody: TablePrtc.tableTest2() }
         return (
             //DivFormPrtc.cardEXE()
             //ModalPrtc.modalTest()
@@ -23,17 +23,62 @@ export default class App1 extends Component {
 
 
 export class BoardEXE extends Component {
-    btnPrtc = new ButtonPrtc();
-    tblPrtc = new TablePrtc();
+
+    boardHeader = ["no", "title", "writer", "date"]
+    boardData = [
+        {
+            bno: 1,
+            btitle: "sample01",
+            bname: "writer1",
+            content: <h1> Sample Test</h1>,
+            regdate: "today"
+        }
+    ];
     render() {
         let source = {
-            title : "게시판 예제"
+            title: "게시판 예제"
         };
-        
+
+        source.panelBody = (
+            <Fragment>
+                <div align="left" style = {{marginBottom :5}}>
+                <Link class="btn btn-success"> New Post</Link>
+                </div>
+                <table class="table table-bordered">
+                    <thead class="table-info">
+                        <tr>
+                            {
+                                this.boardHeader.map(e => (<th id={"brd_" + e}>{e}</th>))
+                            }
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            this.boardData.map(e => (
+                                <tr id={"brd_" + e.bno}>
+                                    {
+                                        <Fragment>
+                                            <td class="h6">{e.bno}</td>
+                                            <td>{e.btitle}</td>
+                                            <td>{e.bname}</td>
+                                            <td>{e.regdate}</td>
+                                        </Fragment>
+                                    }
+                                </tr>
+                            ))
+                        }
+                    </tbody>
+                </table>
+            </Fragment>
+        );
+
+
+
         return (
             <div>
                 {DivFormPrtc.container(DivFormPrtc.panel(
                     source
+
                 ))}
             </div>
         )
@@ -236,22 +281,22 @@ export class TablePrtc extends Component {
         );
         this.tabledata.headerClass = "table-primary table-bordered";
     }
- 
-    static tableExE(data){
+
+    static tableExE(data) {
         return (
-            <table class={"table "+data.class} style = {data.style}>
-            <tbody class = {data.bodyClass}>
-                {data.datas}
-            </tbody>
-            <thead class={data.headerClass}>
-                <tr>
-                    {data.headers}
-                </tr>
-            </thead>
-        </table>
+            <table class={"table " + data.class} style={data.style}>
+                <tbody class={data.bodyClass}>
+                    {data.datas}
+                </tbody>
+                <thead class={data.headerClass}>
+                    <tr>
+                        {data.headers}
+                    </tr>
+                </thead>
+            </table>
         );
     }
-    static tableTest2(){
+    static tableTest2() {
         this.tableSetting();
         let testData = this.tabledata;
         //testData.class = "table-primary";
@@ -279,34 +324,34 @@ export class TablePrtc extends Component {
 
 
 export class ModalPrtc extends Component {
- 
+
 
     static modalEXE(data) {
-        let modalID = (data.modalID?data.modalID:"example")+"Modal"
+        let modalID = (data.modalID ? data.modalID : "example") + "Modal"
         return (
             <Fragment>
 
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target={"#"+modalID}>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target={"#" + modalID}>
                     {data.btnName}
-                 </button>
+                </button>
 
-                <div class="modal fade" id={modalID} tabindex="-1" role="dialog" aria-labelledby={modalID+"Label"} aria-hidden="true">
+                <div class="modal fade" id={modalID} tabindex="-1" role="dialog" aria-labelledby={modalID + "Label"} aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id={modalID+"Label"}>{data.modalTitle}</h5>
+                                <h5 class="modal-title" id={modalID + "Label"}>{data.modalTitle}</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <p class = "text-center h6"> {data.modalMsg} </p>
+                                <p class="text-center h6"> {data.modalMsg} </p>
                                 {
-                                    data.page?data.page:<small class="text-right text-secondary">페이지 없음</small>
+                                    data.page ? data.page : <small class="text-right text-secondary">페이지 없음</small>
                                 }
                             </div>
                             <div class="modal-footer">
-                                {data.modalFooter?data.modalFooter:
+                                {data.modalFooter ? data.modalFooter :
                                     <button type="button" class="btn btn-primary">Save changes</button>
                                 }
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -318,9 +363,9 @@ export class ModalPrtc extends Component {
         )
     }
 
-    static modalTest(){
-       let data = {btnName:"모달 테스트", modalTitle : "여긴 타이틀", modalMsg : "여긴 메세지"};
-       return this.modalEXE(data);
+    static modalTest() {
+        let data = { btnName: "모달 테스트", modalTitle: "여긴 타이틀", modalMsg: "여긴 메세지" };
+        return this.modalEXE(data);
     }
 
 
