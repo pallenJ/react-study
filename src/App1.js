@@ -26,13 +26,15 @@ export class BoardEXE extends Component {
     btnPrtc = new ButtonPrtc();
     tblPrtc = new TablePrtc();
     render() {
-        let elt = [];
-        for (let i = 0; i < 10; i++) {
-            elt.push(<h1>Board</h1>);
-        }
+        let source = {
+            title : "게시판 예제"
+        };
+        
         return (
             <div>
-                {elt}
+                {DivFormPrtc.container(DivFormPrtc.panel(
+                    source
+                ))}
             </div>
         )
     }
