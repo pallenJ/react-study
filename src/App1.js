@@ -77,7 +77,7 @@ export class BoardEXE extends Component {
         source.panelBody = (
             <Fragment>
                 <div align="left" style={{ marginBottom: 5 }}>
-                    <Link to = "boardExe/writer" class="btn btn-success"> New Post</Link>
+                    <Link to = "write" class="btn btn-success"> New Post</Link>
                 </div>
                 <table class="table table-bordered">
                     <thead class="table-info">
@@ -130,7 +130,7 @@ export class BoardEXE extends Component {
                   <label for="writer">Writer</label>
                   <input type="text" class="form-control" name="" id="title" aria-describedby="" placeholder="" value = "guest"/>
                 </div>
-                <a name="" id="" class="btn btn-success" href="/BoardEXE" role="button" onClick = {alert("aa")}>Submit</a>
+                <Link class="btn btn-success" to ="/">Submit</Link>
                 </div>
 
 
