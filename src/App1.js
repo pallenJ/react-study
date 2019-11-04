@@ -77,7 +77,7 @@ export class BoardEXE extends Component {
         source.panelBody = (
             <Fragment>
                 <div align="left" style={{ marginBottom: 5 }}>
-                    <Link class="btn btn-success"> New Post</Link>
+                    <Link to = "boardExe/writer" class="btn btn-success"> New Post</Link>
                 </div>
                 <table class="table table-bordered">
                     <thead class="table-info">
@@ -108,6 +108,9 @@ export class BoardEXE extends Component {
         );
         return source;
     }
+    static test(){
+        return(<script>alert("OK")</script>)
+    }
     static write() {
         let source = {
             title: <h1>new post</h1>
@@ -115,7 +118,6 @@ export class BoardEXE extends Component {
         source.panelBody =
             <Fragment>
                 <div align = "left">
-                <form>
                 <div class="form-group">
                   <label for="title">Title</label>
                   <input type="text" class="form-control" name="" id="title" aria-describedby="" placeholder=""/>
@@ -124,12 +126,11 @@ export class BoardEXE extends Component {
                   <label for="content">Content</label>
                   <textarea class="form-control" name="" id="content" rows="5"></textarea>
                 </div>
-                <a name="" id="" class="btn btn-success" href="#" role="button">Submit</a>
                 <div class="form-group">
                   <label for="writer">Writer</label>
                   <input type="text" class="form-control" name="" id="title" aria-describedby="" placeholder="" value = "guest"/>
                 </div>
-                </form>    
+                <a name="" id="" class="btn btn-success" href="/BoardEXE" role="button" onClick = {alert("aa")}>Submit</a>
                 </div>
 
 
