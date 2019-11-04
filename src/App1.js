@@ -1,19 +1,19 @@
 import React, { Component, Fragment } from 'react'
-import { Link} from "react-router-dom";
+import { Link } from "react-router-dom";
+import Switch, { Case, Default } from 'react-switch-case';
+
 
 export default class App1 extends Component {
 
     render() {
         let source = { panelBody: TablePrtc.tableTest2() }
         return (
-            //DivFormPrtc.cardEXE()
-            //ModalPrtc.modalTest()
-            //TablePrtc.tableTest2()
-            DivFormPrtc.container(
-                DivFormPrtc.panel(
-                    source
-                )
-            )
+           <Fragment>
+               <Switch condition = "1">
+                   <Case value = "1">1111</Case>
+                    <Default>ddd</Default>
+               </Switch>
+           </Fragment>
         )
 
     }
@@ -22,10 +22,22 @@ export default class App1 extends Component {
 
 
 
+export class BoardMain extends Component {
+    render(){
+        return (
+            <div>
+                {DivFormPrtc.container(DivFormPrtc.panel(
+                    BoardEXE.list()
+             
+                ))}
+            </div>
+        )
+    }
+}
 export class BoardEXE extends Component {
 
-    boardHeader = ["no", "title", "writer", "date"]
-    boardData = [
+    static boardHeader = ["no", "title", "writer", "date"]
+    static boardData = [
         {
             bno: 1,
             btitle: "sample01",
@@ -34,15 +46,39 @@ export class BoardEXE extends Component {
             regdate: "today"
         }
     ];
+
     render() {
+        const action = this.props.match.params.action;
+
+        return (
+            <div>
+            {DivFormPrtc.container(DivFormPrtc.panel(
+              BoardEXE.param(action)
+            ))}
+        </div>
+        )
+    }
+    static param(action){
+        let drs = {title:"aaa"};
+        switch (action) {
+            case "value":
+                
+            return drs;
+        
+            default:
+                return this.list();;
+        }
+
+    }
+    static list() {
         let source = {
             title: "게시판 예제"
         };
 
         source.panelBody = (
             <Fragment>
-                <div align="left" style = {{marginBottom :5}}>
-                <Link class="btn btn-success"> New Post</Link>
+                <div align="left" style={{ marginBottom: 5 }}>
+                    <Link class="btn btn-success"> New Post</Link>
                 </div>
                 <table class="table table-bordered">
                     <thead class="table-info">
@@ -58,7 +94,7 @@ export class BoardEXE extends Component {
                                 <tr id={"brd_" + e.bno}>
                                     {
                                         <Fragment>
-                                            <td class="h6">{e.bno}</td>
+                                            <td>{e.bno}</td>
                                             <td>{e.btitle}</td>
                                             <td>{e.bname}</td>
                                             <td>{e.regdate}</td>
@@ -71,22 +107,17 @@ export class BoardEXE extends Component {
                 </table>
             </Fragment>
         );
-
-
-
-        return (
-            <div>
-                {DivFormPrtc.container(DivFormPrtc.panel(
-                    source
-
-                ))}
-            </div>
-        )
+        return source;
+    }
+    static write() {
+        return (<h1>Write</h1>)
     }
 
 
-
 }
+
+
+
 export class DivFormPrtc extends Component {
     static container(source) {
         return (
