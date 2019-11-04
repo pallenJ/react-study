@@ -35,7 +35,7 @@ export class BoardMain extends Component {
     }
 }
 export class BoardEXE extends Component {
-
+    static boardTemp = "";
     static boardHeader = ["no", "title", "writer", "date"]
     static boardData = [
         {
@@ -77,7 +77,7 @@ export class BoardEXE extends Component {
         source.panelBody = (
             <Fragment>
                 <div align="left" style={{ marginBottom: 5 }}>
-                    <Link to = "write" class="btn btn-success"> New Post</Link>
+                    <Link to = "boardExe/write" class="btn btn-success"> New Post</Link>
                 </div>
                 <table class="table table-bordered">
                     <thead class="table-info">
@@ -108,8 +108,8 @@ export class BoardEXE extends Component {
         );
         return source;
     }
-    static test(){
-        return(<script>alert("OK")</script>)
+    static test(source){
+        return(JSON.stringify(source))
     }
     static write() {
         let source = {
@@ -118,19 +118,22 @@ export class BoardEXE extends Component {
         source.panelBody =
             <Fragment>
                 <div align = "left">
+                <form onSubmit = {this.submitExe()}>
+
                 <div class="form-group">
                   <label for="title">Title</label>
-                  <input type="text" class="form-control" name="" id="title" aria-describedby="" placeholder=""/>
+                  <input type="text" class="form-control" name="title" id="title" aria-describedby="" placeholder=""/>
                 </div>
                 <div class="form-group">
                   <label for="content">Content</label>
-                  <textarea class="form-control" name="" id="content" rows="5"></textarea>
+                  <textarea class="form-control" name="content" id="content" rows="5"></textarea>
                 </div>
                 <div class="form-group">
                   <label for="writer">Writer</label>
-                  <input type="text" class="form-control" name="" id="title" aria-describedby="" placeholder="" value = "guest"/>
+                  <input type="text" class="form-control" name="writer" id="writer" aria-describedby="" placeholder="" value = "guest"/>
                 </div>
-                <Link class="btn btn-success" to ="/">Submit</Link>
+                <button class="btn btn-success" type = "submit">Submit</button>
+                </form>
                 </div>
 
 
@@ -138,7 +141,10 @@ export class BoardEXE extends Component {
 
         return (source)
     }
-
+    static submitExe = (e)=>{
+        console.log(e);
+        return JSON.stringify(e);
+    }
 
 }
 
