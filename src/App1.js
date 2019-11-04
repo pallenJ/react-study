@@ -8,12 +8,12 @@ export default class App1 extends Component {
     render() {
         let source = { panelBody: TablePrtc.tableTest2() }
         return (
-           <Fragment>
-               <Switch condition = "1">
-                   <Case value = "1">1111</Case>
+            <Fragment>
+                <Switch condition="1">
+                    <Case value="1">1111</Case>
                     <Default>ddd</Default>
-               </Switch>
-           </Fragment>
+                </Switch>
+            </Fragment>
         )
 
     }
@@ -23,12 +23,12 @@ export default class App1 extends Component {
 
 
 export class BoardMain extends Component {
-    render(){
+    render() {
         return (
             <div>
                 {DivFormPrtc.container(DivFormPrtc.panel(
                     BoardEXE.list()
-             
+
                 ))}
             </div>
         )
@@ -52,21 +52,20 @@ export class BoardEXE extends Component {
 
         return (
             <div>
-            {DivFormPrtc.container(DivFormPrtc.panel(
-              BoardEXE.param(action)
-            ))}
-        </div>
+                {DivFormPrtc.container(DivFormPrtc.panel(
+                    BoardEXE.param(action)
+                ))}
+            </div>
         )
     }
-    static param(action){
-        let drs = {title:"aaa"};
+    static param(action) {
         switch (action) {
-            case "value":
-                
-            return drs;
-        
-            default:
+            case "write":
+                return this.write();
+            case "list":
                 return this.list();;
+            default:
+                return { title: "404", panelBody: "잘못된 접근 입니다." };
         }
 
     }
@@ -110,7 +109,33 @@ export class BoardEXE extends Component {
         return source;
     }
     static write() {
-        return (<h1>Write</h1>)
+        let source = {
+            title: <h1>new post</h1>
+        }
+        source.panelBody =
+            <Fragment>
+                <div align = "left">
+                <form>
+                <div class="form-group">
+                  <label for="title">Title</label>
+                  <input type="text" class="form-control" name="" id="title" aria-describedby="" placeholder=""/>
+                </div>
+                <div class="form-group">
+                  <label for="content">Content</label>
+                  <textarea class="form-control" name="" id="content" rows="5"></textarea>
+                </div>
+                <a name="" id="" class="btn btn-success" href="#" role="button">Submit</a>
+                <div class="form-group">
+                  <label for="writer">Writer</label>
+                  <input type="text" class="form-control" name="" id="title" aria-describedby="" placeholder="" value = "guest"/>
+                </div>
+                </form>    
+                </div>
+
+
+            </Fragment>
+
+        return (source)
     }
 
 
