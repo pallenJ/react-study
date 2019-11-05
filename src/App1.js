@@ -33,7 +33,7 @@ export class BoardMain extends Component {
             </div>
         )
     }
-}
+} 
 export class BoardEXE extends Component {
     static boardTemp = "";
     static boardHeader = ["no", "title", "writer", "date"]
