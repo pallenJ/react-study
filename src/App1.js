@@ -34,7 +34,7 @@ export class BoardMain extends Component {
         )
     }
 } 
-export class BoardEXE extends Component {
+export class BoardEXE extends Component {   
     static boardTemp = "";
     static boardHeader = ["no", "title", "writer", "date"]
     static boardData = [
