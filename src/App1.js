@@ -118,7 +118,7 @@ export class BoardEXE extends Component {
         source.panelBody =
             <Fragment>
                 <div align = "left">
-                <form onSubmit = {this.submitExe()}>
+                <form onSubmit = {this.submitExe}>
 
                 <div class="form-group">
                   <label for="title">Title</label>
@@ -141,9 +141,11 @@ export class BoardEXE extends Component {
 
         return (source)
     }
+    static handleChange = (e) => {
+        console.log( e.target.value);
+      }
     static submitExe = (e)=>{
-        console.log(e);
-        return JSON.stringify(e);
+        alert(e.target.title.value);
     }
 
 }
