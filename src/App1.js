@@ -118,8 +118,9 @@ export class BoardEXE extends Component {
         }
         source.panelBody =
             <Fragment>
+                <Link to = "./">aa</Link>
                 <div align = "left">
-                <form onSubmit = {this.submitExe} action = "/boardExe">
+                <form onSubmit = {this.submitExe}>
 
                 <div class="form-group">
                   <label for="title">Title</label>
