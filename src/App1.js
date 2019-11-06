@@ -41,11 +41,12 @@ export class BoardEXE extends Component {
         {
             bno: 1,
             btitle: "sample01",
-            bname: "writer1",
+            bwriter: "writer1",
             content: <h1> Sample Test</h1>,
             regdate: "today"
         }
     ];
+    static next = 2;
 
     render() {
         const action = this.props.match.params.action;
@@ -53,12 +54,12 @@ export class BoardEXE extends Component {
         return (
             <div>
                 {DivFormPrtc.container(DivFormPrtc.panel(
-                    BoardEXE.param(action)
+                    BoardEXE.urlMapping(action)
                 ))}
             </div>
         )
     }
-    static param(action) {
+    static urlMapping(action) {
         switch (action) {
             case "write":
                 return this.write();
@@ -77,7 +78,7 @@ export class BoardEXE extends Component {
         source.panelBody = (
             <Fragment>
                 <div align="left" style={{ marginBottom: 5 }}>
-                    <Link to = "boardExe/write" class="btn btn-success"> New Post</Link>
+                    <Link to = "/boardExe/write" class="btn btn-success"> New Post</Link>
                 </div>
                 <table class="table table-bordered">
                     <thead class="table-info">
@@ -95,7 +96,7 @@ export class BoardEXE extends Component {
                                         <Fragment>
                                             <td>{e.bno}</td>
                                             <td>{e.btitle}</td>
-                                            <td>{e.bname}</td>
+                                            <td>{e.bwriter}</td>
                                             <td>{e.regdate}</td>
                                         </Fragment>
                                     }
@@ -118,7 +119,7 @@ export class BoardEXE extends Component {
         source.panelBody =
             <Fragment>
                 <div align = "left">
-                <form onSubmit = {this.submitExe}>
+                <form onSubmit = {this.submitExe} action = "/boardExe">
 
                 <div class="form-group">
                   <label for="title">Title</label>
@@ -145,7 +146,19 @@ export class BoardEXE extends Component {
         console.log( e.target.value);
       }
     static submitExe = (e)=>{
-        alert(e.target.title.value);
+        let newPost =
+        {
+            bno : this.next++,
+            btitle : e.target.title.value,
+            bwriter : e.target.writer.value,
+            content : e.target.content.value,
+            regdate: "today"
+        };
+        this.boardData.push(
+            newPost
+            )
+        alert(JSON.stringify(this.boardData));
+        return "./"
     }
 
 }
