@@ -12,6 +12,10 @@ export default class BoardExample extends Component {
             [{ brdno: 1, brdwriter: 'GIOGIO', brdtitle: '최고다 연수유라쨩!', brddate: new Date() },
             { brdno: 2, brdwriter: 'JOJO', brdtitle: '연수다 최고유라쨩!!', brddate: new Date() }]
     }
+    
+    handleSaveData = (data) => { 
+        this.setState({ boards: this.state.boards.concat({ 
+            brdno: this.state.maxNo++, brddate: new Date(), ...data }) }); }
 
     render() {
         const { boards } = this.state;
@@ -20,9 +24,10 @@ export default class BoardExample extends Component {
             <Fragment>
 
                 <div class="container" align="center">
-                    <div></div>
+                    
+                    <BoardForm onSaveData={this.handleSaveData}/>
                     <pre />
-                    <table class="table table-bordered">
+                    <table class="table table-bordered" style = {{width:600}}>
                         <thead class="thead table-primary">
                             <tr>
                                 <th>NO</th>
@@ -55,3 +60,31 @@ class BoardItem extends Component {
         </tr>);
     }
 }
+
+class BoardForm extends Component { 
+    state = {} 
+    handleChange = (e) => { this.setState({ [e.target.name]: e.target.value }) } 
+    handleSubmit = (e) => { 
+        e.preventDefault(); 
+        this.props.onSaveData(this.state); this.setState({}); } 
+    
+    render() { 
+        return ( 
+            <form onSubmit={this.handleSubmit} style={{width:400}}>
+              
+              
+            <div align="left" style = {{padding:10}} class="border">
+             <div class="form-group">
+                  <label for="title">Title</label>
+                  <input placeholder="title" name="brdtitle" id = "title" onChange={this.handleChange} type="text" class="form-control"/>
+                </div>
+                <div class="form-group">
+                  <label for="name">Name</label>
+                  <input placeholder="name" name="brdwriter" id = "name" onChange={this.handleChange} type="text" class="form-control"/>
+                </div>
+             <button class = "btn btn-success btn-block" type="submit">Save</button> 
+            </div>   
+             </form> 
+             ); 
+             } 
+    }
