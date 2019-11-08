@@ -4,7 +4,7 @@ export default class Study extends Component {
     render() {
         return (
            <Fragment>
-               <buttonEx name = "test"/>
+               <ButtonEx name = "test"/>
            </Fragment>
         )
     }
@@ -19,10 +19,10 @@ export class Study1 extends Component {
 }
 
 
-export const buttonEx = (name) => {
+export const ButtonEx = (e) => {
     return (
         <div>
-            <button className="btn btn-primary">{name}</button>
+            <button className="btn btn-primary">{e.name}</button>
         </div>
     )
 }
