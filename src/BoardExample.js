@@ -33,7 +33,7 @@ export default class BoardExample extends Component {
         return (
             <Fragment>
 
-                <div class="container" align="center">
+                <div class="container" align="center" style={{padding:20}}>
 
                     <BoardForm onSaveData={this.handleSaveData} />
                     <pre />
@@ -44,6 +44,7 @@ export default class BoardExample extends Component {
                                 <th>TITLE</th>
                                 <th>NAME</th>
                                 <th>DATE</th>
+                                <th class="table-secondary" />
                             </tr>
                         </thead>
                         <tbody>
@@ -76,19 +77,23 @@ class BoardItem extends Component {
                 <td>{this.props.row.brdwriter}</td> 
                 <td>{this.props.row.brddate.toLocaleDateString('ko-KR')}</td> 
                 <td><button class="btn btn-danger" onClick={this.handleRemove}> <i class="fa fa-trash" aria-hidden="true"></i> </button></td>
-
+                
             </tr>);
     }
 }
 
 class BoardForm extends Component {
-    state = {}
+    state = { 
+        brdwriter:'', 
+        brdtitle:'' 
+    }
+
     handleChange = (e) => { this.setState({ [e.target.name]: e.target.value }) }
     handleSubmit = (e) => {
         e.preventDefault();
         this.props.onSaveData(this.state); this.setState({});
     }
-
+    
     render() {
         return (
             <form onSubmit={this.handleSubmit} style={{ width: 400 }}>

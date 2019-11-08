@@ -5,8 +5,9 @@ import App from './App';
 import App1,{BoardMain,BoardEXE} from './App1';
 
 import * as serviceWorker from './serviceWorker';
-import { Link, Route, BrowserRouter as Router } from "react-router-dom";
+import { Route, BrowserRouter as Router } from "react-router-dom";
 import BoardExample from './BoardExample';
+import Study from './Study';
 
 
 //ReactDOM.render(<App1 />, document.getElementById('root'));
@@ -24,6 +25,7 @@ ReactDOM.render(<Router>
       <Route path = "/boardExe/:action" component = {BoardEXE}/>
       <Route path = "/boardExe/detail/:no" component = {BoardEXE}/>
       <Route path = "/boardExample" component = {BoardExample}/>
+      <Route path = "/study" component = {Study}/>
 
 </Router>, document.getElementById('root'));
 
